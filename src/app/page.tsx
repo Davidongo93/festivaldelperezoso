@@ -83,7 +83,7 @@ export default function Home() {
               height={300}
               className="rounded-lg"
             />
-            <h3 className="text-xl font-semibold mt-4">Comida Orgánica</h3>
+            <h3 className="text-[#527a63] text-xl font-semibold mt-4">Comida Orgánica</h3>
             <p className="text-[#965a37]">$15</p>
           </div>
           <div className="bg-white p-4 rounded-lg shadow-md hover-grow transition-all">
@@ -94,7 +94,7 @@ export default function Home() {
               height={300}
               className="rounded-lg"
             />
-            <h3 className="text-xl font-semibold mt-4">Artesanías</h3>
+            <h3 className="text-[#527a63] text-xl font-semibold mt-4">Artesanías</h3>
             <p className="text-[#965a37]">$30</p>
           </div>
           <div className="bg-white p-4 rounded-lg shadow-md hover-grow transition-all">
@@ -105,7 +105,7 @@ export default function Home() {
               height={300}
               className="rounded-lg"
             />
-            <h3 className="text-xl font-semibold mt-4">Adopta un Árbol</h3>
+            <h3 className="text-[#527a63] text-xl font-semibold mt-4">Adopta un Árbol</h3>
             <p className="text-[#965a37]">$25</p>
           </div>
         </div>
@@ -124,8 +124,9 @@ export default function Home() {
       </section>
 
       <footer className="text-center py-8">
-      <Footer/>
+        <p className="text-sm text-[#527a63]">© 2024 Festival del Oso Perezoso</p>
       </footer>
+      <Footer/>
     </div>
   );
 }
