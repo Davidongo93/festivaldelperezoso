@@ -1,100 +1,130 @@
+'use client'
 import Image from "next/image";
+import { useState } from "react";
+import Footer from "./components/footer/Footer"
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+  });
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    alert(`Gracias por registrarte, ${formData.name}!`);
+    // Lógica de registro
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  return (
+    <div className="min-h-screen bg-[#e9e4db] fade-in">
+      {/* Encabezado con imagen */}
+      <header className="relative h-[400px] sm:h-[500px] lg:h-[600px] w-full">
+        <Image
+          src="/festivalperezoso.jpeg"
+          alt="Festival del Oso Perezoso"
+          layout="fill"
+          objectFit="cover"
+          className="brightness-75"
+        />
+        <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white p-8">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-[Poppins]">
+            ¡Bienvenido al Festival del Oso Perezoso!
+          </h1>
+          <p className="mt-4 text-lg sm:text-xl lg:text-2xl font-[Poppins]">
+            Celebrando la conservación y la naturaleza
+          </p>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+      </header>
+
+      {/* Sección de Registro */}
+      <section className="max-w-lg mx-auto bg-[#f5f1e3] p-6 rounded-lg shadow-md mt-12 hover-grow">
+        <h2 className="text-2xl font-bold text-[#965a37] mb-4">Regístrate</h2>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleInputChange}
+            className="p-3 rounded-md border border-gray-300"
+            placeholder="Tu nombre"
+            required
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleInputChange}
+            className="p-3 rounded-md border border-gray-300"
+            placeholder="Tu email"
+            required
           />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+          <button
+            type="submit"
+            className="bg-[#965a37] text-white font-semibold py-3 rounded-md hover:bg-[#7a462d] transition-all hover-grow"
+          >
+            Registrarse
+          </button>
+        </form>
+      </section>
+
+      {/* Sección de Catálogo de Productos */}
+      <section className="my-12">
+        <h2 className="text-3xl font-bold text-center text-[#527a63] mb-6">Productos Disponibles</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="bg-white p-4 rounded-lg shadow-md hover-grow transition-all">
+            <Image
+              src="/festivalperezoso.jpeg"
+              alt="Producto orgánico"
+              width={400}
+              height={300}
+              className="rounded-lg"
+            />
+            <h3 className="text-xl font-semibold mt-4">Comida Orgánica</h3>
+            <p className="text-[#965a37]">$15</p>
+          </div>
+          <div className="bg-white p-4 rounded-lg shadow-md hover-grow transition-all">
+            <Image
+              src="/festivalperezoso.jpeg"
+              alt="Artesanías"
+              width={400}
+              height={300}
+              className="rounded-lg"
+            />
+            <h3 className="text-xl font-semibold mt-4">Artesanías</h3>
+            <p className="text-[#965a37]">$30</p>
+          </div>
+          <div className="bg-white p-4 rounded-lg shadow-md hover-grow transition-all">
+            <Image
+              src="/festivalperezoso.jpeg"
+              alt="Adopta un árbol"
+              width={400}
+              height={300}
+              className="rounded-lg"
+            />
+            <h3 className="text-xl font-semibold mt-4">Adopta un Árbol</h3>
+            <p className="text-[#965a37]">$25</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Sección de Historias */}
+      <section className="my-12">
+        <h2 className="text-3xl font-bold text-center text-[#527a63] mb-6">Historias Inspiradoras</h2>
+        <div className="bg-[#f5f1e3] p-6 rounded-lg shadow-md hover-grow">
+          <p className="text-lg text-[#965a37]">
+            Aprende sobre cómo nuestro festival contribuye a la conservación de los osos perezosos
+            y cómo tú también puedes hacer la diferencia. Cada año, trabajamos con comunidades para
+            reforestar y proteger su hábitat natural.
+          </p>
+        </div>
+      </section>
+
+      <footer className="text-center py-8">
+      <Footer/>
       </footer>
     </div>
   );

@@ -5,6 +5,10 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --accent-color: #527a63;
+  --accent-hover: #3b614d;
+  --secondary-color: #965a37;
+  --hover-light: #7a462d;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,11 +21,32 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Poppins', sans-serif; /* Fuente más amigable y moderna */
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .hover-grow {
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .hover-grow:hover {
+    transform: scale(1.05);
+  }
+
+  .fade-in {
+    animation: fadeIn 0.5s ease-in-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 }
